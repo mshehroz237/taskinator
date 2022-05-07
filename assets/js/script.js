@@ -213,4 +213,15 @@ pageContentEl.addEventListener("click", taskButtonHandler);
 var saveTasks = function(){
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+var loadTasks = function(){
+  savedTasks = localStorage.getItem("tasks");
+  if(!savedTasks){
+    return false;
+  }
+  savedTasks = JSON.parse(tasks);
+  for ( var i = 0; i < savedTasks.length; i++){
+    createTaskEl(saveTasks[i]);
+  }
+}
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
